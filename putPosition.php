@@ -14,7 +14,7 @@
     $username = $_REQUEST['username'];
 
 
-    $sql = "INSERT INTO `points` VALUES (NULL,'$province',$latitude,$longitude,'$city','$district','$address','$time','$email',$username)";
+    $sql = "INSERT INTO `points` VALUES (NULL,'$province',$latitude,$longitude,'$city','$district','$address','$time','$email','$username')";
     $result =  mysqli_query($conn,$sql);        
     
     if($result){
