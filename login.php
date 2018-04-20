@@ -31,7 +31,7 @@
             "isLogin"=>true,
             "message"=>"Login successfully",
             "type"=>$row[0]["type"],
-            "son"=>$row[0]["son"],
+            "son"=>$row[0]["son"]
             ]);
     }else{
         echo json_encode([

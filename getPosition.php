@@ -1,28 +1,23 @@
 <?php
-    // $conn = mysqli_connect("localhost","root","");
-    // mysqli_query($conn,"use indoor_location");
-    // $sql = "select distinct x ,y from location";
-    // $result =  mysqli_query($conn,$sql);
-    // $row = mysqli_fetch_all($result);
-
-    // $sql = "select * from location;";
-    // $result = mysqli_query($conn)
-
-    // echo json_encode($row);
-   
+    
     $email = $_REQUEST['email'];
     $conn = mysqli_connect("127.0.0.1","root","","findChildren");
     mysqli_query($conn,"use points");
 
-    $sql = "select * from points where email = '$email'";
+    $sql = "select * from points where email = '$email' order by pid DESC";
 
     $result = mysqli_query($conn,$sql);
 
     if($result){
         $row = mysqli_fetch_all($result,1);
+        if(count($row)>=1){
+            $json = $row[0];
+            
+        }else{
+            $json = null;
+        }
 
-        $json = $row[count($row)-1];
-
+     
     }
 
 
@@ -39,7 +34,7 @@
                 "address"=>$json["address"],
                 "time"=>$json["time"]
             ],
-            "email"=>$json["email"],
+            "email"=>$email,
             "isLogin"=>true,
             "message"=>"get success"
             ]);

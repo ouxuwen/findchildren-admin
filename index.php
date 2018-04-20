@@ -1,16 +1,10 @@
 <?php
-    // $conn = mysqli_connect("localhost","root","");
-    // mysqli_query($conn,"use indoor_location");
-    // $sql = "select distinct x ,y from location";
-    // $result =  mysqli_query($conn,$sql);
-    // $row = mysqli_fetch_all($result);
 
-    // $sql = "select * from location;";
-    // $result = mysqli_query($conn)
 
-    // echo json_encode($row);
+     $conn = mysqli_connect("127.0.0.1","root","","indoor_location");
+     mysqli_query($conn,"use location");
+    $sql = "select x,y,mac,AVG(rss) from location GROUP BY x,y,mac";
 
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-
-    echo "success";
+    $result = mysqli_query($conn,$sql);
+    $row = mysqli_fetch_all($result,1);
+    echo json_encode($row);
